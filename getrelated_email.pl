@@ -15,14 +15,8 @@ exit ;
 
 if($res =~ /^AS/i){
 @addies = `whois -B  $res | egrep "e-mail|changed|notify|upd-to"| grep -v "ripe.net"` ; 
-#print "1\n" ;
-#print @addies ;
-#exit ;
 }else{
 @addies = `whois -r -G -B -d -x $res | egrep "e-mail|changed|notify|upd-to"| grep -v "ripe.net"` ; 
-#print "2\n" ;
-#print "@addies" ;
-#exit ;
 }
 
 #
@@ -36,23 +30,14 @@ $_ =~ s/\s+$//;
 push(@mntby2, $_) ;
 }
 
-#print "@mntby2\n" ;
-#exit ;
-
 # Unique maintainer handles
     my %mnts   = map { $_, 1 } @mntby2;
     my @unique_mnts = keys %mnts;
 
-#print @unique_mnts ;
-#exit ;
-
 foreach $mnt (@unique_mnts){
 
-#if($mnt !~ /mnt-by/){
 	@mnt_related = `whois -B $mnt` ; 
 	getmnte(@mnt_related) ;
-#print @mnt_related ;
-#	}
 }
 
 
@@ -68,9 +53,6 @@ foreach $i (@addies){
     my %addies   = map { $_, 1 } @caddies;
     my @unique_addies = keys %addies;
 
-#$final = ret_e() ;
-#$final =~ s/,$//g ;
-#print  "$final\n" ;
 ret_e() ;
 
 
@@ -111,11 +93,6 @@ foreach $i (@addies2){
 #make addresses unique
     my %addies2   = map { $_, 1 } @caddies2;
     my @unique_addies2 = keys %addies2;
-
-#print @unique_addies2 ;
-#	print "#\n#\n#\n# Addies from maintainers.\n" ;
-
-#print "To: " ;
 
 foreach $j ( @unique_addies2 ){
 	push(@all, $j) ;

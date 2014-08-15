@@ -1,0 +1,5 @@
+Here I store the scripts that I wrote while working at the RIPE NCC.
+
+get_related_email.pl 
+
+Is a script to pull email adresses from related RIPE Database objects. Just fill in any IP address/AS number and it will pull email addresses. 
